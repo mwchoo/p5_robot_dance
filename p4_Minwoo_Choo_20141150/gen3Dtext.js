@@ -13,28 +13,6 @@ function genWord(sz) {
   word_tech = new Word3D('Technology', 6, size, res, bevelled, font, style);
 }
 
-/*
-function keyPressed() {
-  // Cycle through fonts and styles, type new words followed by enter to display them, SHIFT to toggle bevel
-  if(keyCode == RIGHT_ARROW){indexF = (indexF+1) % fonts.length; genWord()} else
-  if(keyCode == LEFT_ARROW){indexF = indexF <= 0 ? fonts.length-1 : indexF-1; genWord()} else
-  if(keyCode == UP_ARROW){indexS = indexS == styles.length-1 ? 0 : indexS+1; genWord()} else
-  if(keyCode == DOWN_ARROW){indexS = indexS == 0 ? styles.length-1 : indexS-1; genWord()} else
-  if(keyCode == ENTER){
-    oldString = newString;
-    genWord()
-    newString = "";
-  } else
-  if(keyCode == SHIFT){
-    bevelled = !bevelled;
-    genWord()
-  } else
-  if(keyCode == 20){}
-  else{
-    newString += key
-  }
-}*/
-
 function draw3DText() {
   push();
   normalMaterial();

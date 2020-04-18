@@ -6,8 +6,7 @@
 let scene = 0;
 let sound_bgm;
 
-let font_georgia;
-let font_game, font_nanum;  // for envelope text
+let font_nanum;  // for envelope text
 let cgSplashName;
 let envelope;
 let scene_timer;
@@ -36,8 +35,6 @@ let centerZ;
 let h = 20;
 
 function preload() {
-  //font_georgia = loadFont('assets/georgia.ttf');
-  //font_game = loadFont('assets/game.ttf');
   font_nanum = loadFont('assets/garam.ttf');
   envelope = loadModel('assets/envelope.obj');
   textureMat.concrete = loadImage('assets/concrete.jpg');
@@ -82,7 +79,7 @@ function draw() {
 
   // light setting
   //lights();
-  pointLight(255, 255, 255, locX, locY, windowHeight/2);
+  pointLight(255, 255, 255, locX, locY, windowHeight / 2);
   //directionalLight(255, 255, 255, 1, 0, 0);
   ambientLight(0.2);
   //specularColor(255, 0, 0);
@@ -90,15 +87,6 @@ function draw() {
   //specularColor(0, 255, 0);
   //pointLight(0, 255, 0, 0, 50, 50);
   //specularMaterial(255);
-
-  // camera setting
-  X = sliderGroup[0].value();
-  Y = sliderGroup[1].value();
-  Z = sliderGroup[2].value() + 1500;
-  centerX = sliderGroup[3].value();
-  centerY = sliderGroup[4].value();
-  centerZ = sliderGroup[5].value();
-  camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // scene control
   if (scene === 0) {
@@ -113,21 +101,22 @@ function draw() {
   }*/
 
 
-  // draw artech
-  //cgArtech.display();
-
-  // draw envelope
-  //rotateY(mouseX/100);
-  drawEnvelope();
-  //push();
-  //rotateZ(HALF_PI/2);
-  //cgEnvelopeJusub.display();
-  //pop();
+  // camera setting
+  X = sliderGroup[0].value();
+  Y = sliderGroup[1].value();
+  Z = sliderGroup[2].value() + 1500;
+  centerX = sliderGroup[3].value();
+  centerY = sliderGroup[4].value();
+  centerZ = sliderGroup[5].value();
+  camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // draw space
   drawSpace();
   draw3DText();
   drawFrame();
+
+  // draw envelope
+  drawEnvelope();
 
   // draw exhibition stand
   drawStand();
@@ -143,13 +132,21 @@ function mouseReleased() {
 }
 
 function keyPressed() {
+  if (keyCode === RIGHT_ARROW) {
 
+  } else if (keyCode === LEFT_ARROW) {
+
+  } else if (keyCode === UP_ARROW) {
+
+  } else if (keyCode === DOWN_ARROW) {
+
+  }
 }
 
 function saveImage() {
   saveCanvas("image", "jpg");
 }
 
-function windowResized(){
+function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
