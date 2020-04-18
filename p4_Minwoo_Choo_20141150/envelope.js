@@ -32,7 +32,7 @@ function drawCover() {
   push();
   let h = map(mouseY, 0, height, 0, 360);
   colorMode(HSB, 360, 100, 100, 100);
-
+  noStroke();
   fill(h, 100, 100, 30);
   box(301, 200, 301);
   pop();

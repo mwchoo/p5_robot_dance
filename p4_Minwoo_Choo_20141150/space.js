@@ -1,28 +1,25 @@
-class Box {
-  constructor(x, y, w, h) {
-    this.body = Matter.Bodies.rectangle(x, y, w, h);
-    Matter.World.add(world, this.body);
-    this.w = w;
-    this.h = h;
-  }
+function drawSpace() {
+  push();
+  translate(0, -5, -1000);
+  fill(150, 200, 100);
 
-  show() {
-    const pos = this.body.position;
-    const angle = this.body.angle;
-    push();
-    translate(pos.x, pos.y);
-    rotate(angle);
-    fill(255);
-    rectMode(CENTER);
-    rect(0, 0, this.w, this.h);
-    pop();
-  }
-}
+  noStroke();
+  plane(1000, 1000);
 
-/************************************/
-class Ground extends Box {
-  constructor(x, y, w, h) {
-    super(x, y, w, h);
-    this.body.isStatic = true;
-  }
+  rotateX(HALF_PI);
+  translate(0, 1000, -500);
+  plane(1000, 2000);
+
+  rotateY(HALF_PI);
+  translate(-500, 0, -500);
+  plane(1000, 2000);
+
+  rotateY(HALF_PI);
+  translate(-500, 0, -500);
+  plane(1000, 2000);
+
+  rotateY(HALF_PI);
+  translate(-500, 0, -500);
+  plane(1000, 2000);
+  pop();
 }
