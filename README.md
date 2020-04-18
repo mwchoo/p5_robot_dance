@@ -1,4 +1,4 @@
-# :smiling_imp: With love, Ju.
+# :envelope: With love, Ju.
 AAT4001: Project 4 - 3D Virtual Sculpture Exhibit using p5.js
 
 ```
