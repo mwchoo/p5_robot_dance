@@ -17,7 +17,7 @@ let sound_bgm;
 let font_nanum;  // for envelope text
 let cgSplashName;
 let envelope;
-let scene_timer;
+//let scene_timer;
 
 let textureMat = {
   'concrete': undefined,
@@ -25,7 +25,6 @@ let textureMat = {
   'marble': undefined,
   'wood': undefined
 }
-
 let pframe = {
   'jusub': undefined,
   'goodsoon': undefined,
@@ -33,7 +32,6 @@ let pframe = {
   'artech': undefined
 }
 
-let sliderGroup = [];
 let X = 0;
 let Y = 0;
 let Z = 1700;
@@ -63,9 +61,8 @@ function setup() {
   gl = this._renderer.GL;
   gl.disable(gl.DEPTH_TEST);*/
 
-  //cgSplashName = new Text("사랑을 담아, -주", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_nanum);
+  cgSplashName = new Text("사랑을 담아, -주", 100, -200, 0, 0, color(195, 56, 51, 1), font_nanum);
   //scene_timer = new Timer(3000, handleScene);
-
   genWord(1);
 }
 
@@ -117,12 +114,12 @@ function handleKeyDown() {
   if (keyIsDown(UP_ARROW)) {
     // go forward
     Z -= 10;
-    Y = cos(Z/50) * 60 - 100;  // walk effect
+    Y = cos(Z / 50) * 60 - 100;  // walk effect
     // play walk sound
   } else if (keyIsDown(DOWN_ARROW)) {
     // go backward
     Z += 10;
-    Y = cos(Z/50) * 60 - 100;  // walk effect
+    Y = cos(Z / 50) * 60 - 100;  // walk effect
     // play walk sound
   }
   if (keyIsDown(LEFT_ARROW)) {
