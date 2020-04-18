@@ -18,7 +18,8 @@ let scene_timer;
 let textureMat = {
   'concrete': undefined,
   'steel': undefined,
-  'marble': undefined
+  'marble': undefined,
+  'wood': undefined
 }
 
 let sliderGroup = [];
@@ -35,9 +36,10 @@ function preload() {
   //font_game = loadFont('assets/game.ttf');
   font_nanum = loadFont('assets/garam.ttf');
   envelope = loadModel('assets/envelope.obj');
-  textureMat.concrete = loadImage('assets/concrete.jpg')
-  textureMat.steel = loadImage('assets/steel.jpg')
-  textureMat.marble = loadImage('assets/marble.jpg')
+  textureMat.concrete = loadImage('assets/concrete.jpg');
+  textureMat.steel = loadImage('assets/steel.jpg');
+  textureMat.marble = loadImage('assets/marble.jpg');
+  textureMat.wood = loadImage('assets/wood.jpg');
   //sound_bgm = loadSound('assets/bgm.mp3');
 }
 
