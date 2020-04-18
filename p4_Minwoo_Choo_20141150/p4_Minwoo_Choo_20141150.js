@@ -1,6 +1,14 @@
 /*
 2020-1 Computer Grapics :: PROJECT 4 - VIRTUAL EXHIBITION
 20141150 Minwoo Choo
+
+< MANUAL >
+mouseX: control the position of the light
+mouseY: control the envelope cover color
+ARROW_UP Key: go forward
+ARROW_DOWN Key: go backward
+ARROW_LEFT Key: turn your head to the left
+ARROW_RIGHT Key: turn your head to the right
 */
 
 let scene = 0;
@@ -57,17 +65,6 @@ function setup() {
 
   //cgSplashName = new Text("사랑을 담아, -주", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_nanum);
   //scene_timer = new Timer(3000, handleScene);
-/*
-  for (let i = 0; i < 6; i++) {
-    if (i === 2) {
-      sliderGroup[i] = createSlider(10, 400, 200);
-    } else {
-      sliderGroup[i] = createSlider(-400, 400, 0);
-    }
-    h = map(i, 0, 6, 5, 85);
-    sliderGroup[i].position(10, height + h);
-    sliderGroup[i].style('width', '80px');
-  }*/
 
   genWord(1);
 }
@@ -79,20 +76,13 @@ function draw() {
 
   // scene control
   if (scene === 0) {
-    //drawSplash();
-    //return;
+    drawSplash();
+    return;
   }
 
   // light setting
-  //lights();
   pointLight(255, 255, 255, locX, locY, windowHeight / 2);
-  //directionalLight(255, 255, 255, 1, 0, 0);
   ambientLight(0.2);
-  //specularColor(255, 0, 0);
-  //pointLight(255, 255, 255, 0, -50, 50);
-  //specularColor(0, 255, 0);
-  //pointLight(0, 255, 0, 0, 50, 50);
-  //specularMaterial(255);
 
   // bgm control
   /*
@@ -101,14 +91,6 @@ function draw() {
   }*/
 
   // camera setting
-  /*
-  X = sliderGroup[0].value();
-  Y = sliderGroup[1].value();
-  Z = sliderGroup[2].value() + 1500;
-  centerX = sliderGroup[3].value();
-  centerY = sliderGroup[4].value();
-  centerZ = sliderGroup[5].value();
-   */
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // draw space
@@ -135,11 +117,20 @@ function handleKeyDown() {
   if (keyIsDown(UP_ARROW)) {
     // go forward
     Z -= 10;
-    Y = cos(Z/50) * 60 - 100;
+    Y = cos(Z/50) * 60 - 100;  // walk effect
+    // play walk sound
   } else if (keyIsDown(DOWN_ARROW)) {
     // go backward
     Z += 10;
-    Y = cos(Z/50) * 60 - 100;
+    Y = cos(Z/50) * 60 - 100;  // walk effect
+    // play walk sound
+  }
+  if (keyIsDown(LEFT_ARROW)) {
+    // turn your head to the left
+    X -= 10;
+  } else if (keyIsDown(RIGHT_ARROW)) {
+    // turn your head to the right
+    X += 10;
   }
 }
 
