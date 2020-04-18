@@ -17,7 +17,8 @@ function drawStand() {
   push();
   translate(0, 130, 0);
   noStroke();
-  fill(200, 200, 200);
+  //fill(200, 200, 200);
+  texture(textureMat.steel);
   box(300, 100, 300);
 
   translate(0, 200, 0);

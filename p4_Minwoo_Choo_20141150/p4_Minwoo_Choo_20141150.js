@@ -6,14 +6,20 @@
 let scene = 0;
 let sound_bgm;
 
-let font_georgia;  // for envelope text
-let font_game, font_nanum;  // for artech text
+let font_georgia;
+let font_game, font_nanum;  // for envelope text
 let cgSplashName;
 let cgEnvelopeJusub;
 let cgArtech;
 let envelope;
 let rot = 0;
 let scene_timer;
+
+let textureMat = {
+  'concrete': undefined,
+  'steel': undefined,
+  'marble': undefined
+}
 
 let sliderGroup = [];
 let X;
@@ -27,8 +33,11 @@ let h = 20;
 function preload() {
   //font_georgia = loadFont('assets/georgia.ttf');
   //font_game = loadFont('assets/game.ttf');
-  font_nanum = loadFont('assets/garam.ttf'); //NanumBarunGothic.ttf');
+  font_nanum = loadFont('assets/garam.ttf');
   envelope = loadModel('assets/envelope.obj');
+  textureMat.concrete = loadImage('assets/concrete.jpg')
+  textureMat.steel = loadImage('assets/steel.jpg')
+  textureMat.marble = loadImage('assets/marble.jpg')
   //sound_bgm = loadSound('assets/bgm.mp3');
 }
 
