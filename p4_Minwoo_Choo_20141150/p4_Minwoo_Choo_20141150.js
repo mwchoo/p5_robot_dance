@@ -33,8 +33,7 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(windowWidth, windowHeight, WEBGL);
-  cnv.position(0, 0, 'fixed');
+  createCanvas(windowWidth, windowHeight, WEBGL);
   colorMode(RGB, 1);
   //rot = 0;
   /*
@@ -57,6 +56,8 @@ function setup() {
     sliderGroup[i].position(10, height + h);
     sliderGroup[i].style('width', '80px');
   }
+
+  genWord(0.5);
 }
 
 function draw() {
@@ -110,6 +111,7 @@ function draw() {
 
   // draw space
   drawSpace();
+  draw3DText();
 
   // draw exhibition stand
   drawStand();
