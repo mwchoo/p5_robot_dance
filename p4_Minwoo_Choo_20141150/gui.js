@@ -34,7 +34,6 @@ class Text { // implemented by Minwoo Choo
     this._text.redraw();
     this._text.clear();
     this._text.noStroke();
-    //this._text.noFill();
     noStroke();
     this._text.background(0, 0);
     translate(0, 0, this._text.z);
