@@ -114,12 +114,10 @@ function handleKeyDown() {
     // go forward
     Z -= 10;
     Y = cos(Z / 50) * 60 - 100;  // walk effect
-    // play walk sound
   } else if (keyIsDown(DOWN_ARROW)) {
     // go backward
     Z += 10;
     Y = cos(Z / 50) * 60 - 100;  // walk effect
-    // play walk sound
   }
   if (keyIsDown(LEFT_ARROW)) {
     // turn your head to the left
