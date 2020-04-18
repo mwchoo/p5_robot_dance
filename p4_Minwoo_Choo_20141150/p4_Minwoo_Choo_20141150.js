@@ -106,10 +106,6 @@ function draw() {
   handleKeyDown();
 }
 
-function mouseDragged() {
-
-}
-
 function handleKeyDown() {
   if (keyIsDown(UP_ARROW)) {
     // go forward
@@ -128,6 +124,12 @@ function handleKeyDown() {
   } else if (keyIsDown(RIGHT_ARROW)) {
     // turn your head to the right
     X += 10;
+  }
+}
+
+function keyPressed() {
+  if (keyCode === 80) {
+    saveImage();
   }
 }
 
