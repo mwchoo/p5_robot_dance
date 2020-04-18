@@ -27,6 +27,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   colorMode(RGB, 1);
   //rot = 0;
+  /*
+  gl = this._renderer.GL;
+  gl.disable(gl.DEPTH_TEST);*/
 
   //cgSplashName = new Text("Corona Extra", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_georgia);
   //cgEnvelopeJusub = new Text("사랑을 담아, -주", 20, -35, 30, 5, color(0, 0, 0, 1), font_nanum);
@@ -69,6 +72,7 @@ function draw() {
 
   // draw exhibition stand
   drawStand();
+  drawCover();
 }
 
 function mousePressed() {

@@ -15,7 +15,25 @@ function drawEnvelope() {
 
 function drawStand() {
   push();
+  translate(0, 130, 0);
   noStroke();
-  
+  fill(200, 200, 200);
+  box(300, 100, 300);
+
+  translate(0, 200, 0);
+  box(150, 300, 150);
+
+  translate(0, 150, 0);
+  box(200, 30, 200);
+  pop();
+}
+
+function drawCover() {
+  push();
+  let h = map(mouseY, 0, height, 0, 360);
+  colorMode(HSB, 360, 100, 100, 100);
+
+  fill(h, 100, 100, 30);
+  box(301, 200, 301);
   pop();
 }
