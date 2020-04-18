@@ -15,6 +15,7 @@ P Key: screen shot
 
 let scene = 0;
 let sound_bgm;
+let sound_walk;
 
 let font_nanum;  // for envelope text
 let cgSplashName;
@@ -53,7 +54,8 @@ function preload() {
   pframe.goodsoon = loadImage('assets/goodsoon_painted.png');
   pframe.sangyong = loadImage('assets/sangyong_painted.png');
   pframe.artech = loadImage('assets/artech_painted.png');
-  //sound_bgm = loadSound('assets/bgm.mp3');
+  sound_bgm = loadSound('assets/bgm.mp3');
+  sound_walk = loadSound('assets/walk.mp3');
 }
 
 function setup() {
@@ -84,10 +86,9 @@ function draw() {
   ambientLight(0.2);
 
   // bgm control
-  /*
   if (!sound_bgm.isPlaying()) {
     sound_bgm.play();
-  }*/
+  }
 
   // camera setting
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
@@ -130,8 +131,21 @@ function handleKeyDown() {
 }
 
 function keyPressed() {
+  if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+    if (!sound_walk.isPlaying()) {
+      sound_walk.play();
+    }
+  }
   if (keyCode === 80) {
     saveImage();
+  }
+}
+
+function keyReleased() {
+  if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+    if (sound_walk.isPlaying()) {
+      sound_walk.stop();
+    }
   }
 }
 
