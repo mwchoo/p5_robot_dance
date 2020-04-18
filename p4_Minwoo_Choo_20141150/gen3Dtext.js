@@ -17,7 +17,7 @@ function draw3DText() {
   push();
   normalMaterial();
   noStroke();
-  translate(0, -150, -1000);
+  translate(0, -150, -990);
   word_artn.show();
   translate(0, 150, 0);
   word_tech.show();

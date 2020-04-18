@@ -26,12 +26,12 @@ let pframe = {
 }
 
 let sliderGroup = [];
-let X;
-let Y;
-let Z;
-let centerX;
-let centerY;
-let centerZ;
+let X = 0;
+let Y = 0;
+let Z = 1700;
+let centerX = 0;
+let centerY = 0;
+let centerZ = 0;
 let h = 20;
 
 function preload() {
@@ -57,7 +57,7 @@ function setup() {
 
   //cgSplashName = new Text("사랑을 담아, -주", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_nanum);
   //scene_timer = new Timer(3000, handleScene);
-
+/*
   for (let i = 0; i < 6; i++) {
     if (i === 2) {
       sliderGroup[i] = createSlider(10, 400, 200);
@@ -67,7 +67,7 @@ function setup() {
     h = map(i, 0, 6, 5, 85);
     sliderGroup[i].position(10, height + h);
     sliderGroup[i].style('width', '80px');
-  }
+  }*/
 
   genWord(1);
 }
@@ -76,6 +76,12 @@ function draw() {
   background(0);
   let locX = mouseX - width / 2;
   let locY = mouseY - height / 2;
+
+  // scene control
+  if (scene === 0) {
+    //drawSplash();
+    //return;
+  }
 
   // light setting
   //lights();
@@ -88,26 +94,21 @@ function draw() {
   //pointLight(0, 255, 0, 0, 50, 50);
   //specularMaterial(255);
 
-  // scene control
-  if (scene === 0) {
-    //drawSplash();
-    //return;
-  }
-
   // bgm control
   /*
   if (!sound_bgm.isPlaying()) {
     sound_bgm.play();
   }*/
 
-
   // camera setting
+  /*
   X = sliderGroup[0].value();
   Y = sliderGroup[1].value();
   Z = sliderGroup[2].value() + 1500;
   centerX = sliderGroup[3].value();
   centerY = sliderGroup[4].value();
   centerZ = sliderGroup[5].value();
+   */
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // draw space
@@ -121,25 +122,24 @@ function draw() {
   // draw exhibition stand
   drawStand();
   drawCover();
+
+  // handle cam setting
+  handleKeyDown();
 }
 
-function mousePressed() {
+function mouseDragged() {
 
 }
 
-function mouseReleased() {
-
-}
-
-function keyPressed() {
-  if (keyCode === RIGHT_ARROW) {
-
-  } else if (keyCode === LEFT_ARROW) {
-
-  } else if (keyCode === UP_ARROW) {
-
-  } else if (keyCode === DOWN_ARROW) {
-
+function handleKeyDown() {
+  if (keyIsDown(UP_ARROW)) {
+    // go forward
+    Z -= 10;
+    Y = cos(Z/50) * 60 - 100;
+  } else if (keyIsDown(DOWN_ARROW)) {
+    // go backward
+    Z += 10;
+    Y = cos(Z/50) * 60 - 100;
   }
 }
 
