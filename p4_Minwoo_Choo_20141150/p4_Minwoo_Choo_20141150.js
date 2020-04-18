@@ -9,10 +9,7 @@ let sound_bgm;
 let font_georgia;
 let font_game, font_nanum;  // for envelope text
 let cgSplashName;
-let cgEnvelopeJusub;
-let cgArtech;
 let envelope;
-let rot = 0;
 let scene_timer;
 
 let textureMat = {
@@ -20,6 +17,13 @@ let textureMat = {
   'steel': undefined,
   'marble': undefined,
   'wood': undefined
+}
+
+let pframe = {
+  'jusub': undefined,
+  'goodsoon': undefined,
+  'sangyong': undefined,
+  'artech': undefined
 }
 
 let sliderGroup = [];
@@ -40,21 +44,21 @@ function preload() {
   textureMat.steel = loadImage('assets/steel.jpg');
   textureMat.marble = loadImage('assets/marble.jpg');
   textureMat.wood = loadImage('assets/wood.jpg');
+  pframe.jusub = loadImage('assets/jusub_painted.png');
+  pframe.goodsoon = loadImage('assets/goodsoon_painted.png');
+  pframe.sangyong = loadImage('assets/sangyong_painted.png');
+  pframe.artech = loadImage('assets/artech_painted.png');
   //sound_bgm = loadSound('assets/bgm.mp3');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   colorMode(RGB, 1);
-  //rot = 0;
   /*
   gl = this._renderer.GL;
   gl.disable(gl.DEPTH_TEST);*/
 
-  //cgSplashName = new Text("Corona Extra", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_georgia);
-  //cgEnvelopeJusub = new Text("사랑을 담아, -주", 20, -35, 30, 5, color(0, 0, 0, 1), font_nanum);
-  //cgArtech = new Text("ART&TECH", 20, 150, 65, 0, color(240, 240, 240, 1), font_georgia);
-
+  //cgSplashName = new Text("사랑을 담아, -주", 100, windowWidth/2 - 300, windowHeight/2 - 70, color(195, 56, 51, 1), font_nanum);
   //scene_timer = new Timer(3000, handleScene);
 
   for (let i = 0; i < 6; i++) {
@@ -68,7 +72,7 @@ function setup() {
     sliderGroup[i].style('width', '80px');
   }
 
-  genWord(0.5);
+  genWord(1);
 }
 
 function draw() {
@@ -123,6 +127,7 @@ function draw() {
   // draw space
   drawSpace();
   draw3DText();
+  drawFrame();
 
   // draw exhibition stand
   drawStand();
@@ -143,4 +148,8 @@ function keyPressed() {
 
 function saveImage() {
   saveCanvas("image", "jpg");
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
 }

@@ -1,5 +1,5 @@
 function genWord(sz) {
-  const size = (width / 200) * sz  // Size of each cube making up the letters
+  const size = 2 * sz;  // Size of each cube making up the letters
   const res = 50 // Number of pixels per character
   const fonts = ["Georgia", "Times New Roman", "Helvetica", "Verdana", "Arial", "Courier New", "Trebuchet MS"];
   const styles = ["bold", "normal", "bold italic", "italic", ];
