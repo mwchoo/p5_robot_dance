@@ -80,7 +80,7 @@ function draw() {
   //lights();
   pointLight(255, 255, 255, locX, locY, windowHeight/2);
   //directionalLight(255, 255, 255, 1, 0, 0);
-  //ambientLight(50);
+  ambientLight(0.2);
   //specularColor(255, 0, 0);
   //pointLight(255, 255, 255, 0, -50, 50);
   //specularColor(0, 255, 0);
