@@ -44,7 +44,7 @@ let centerZ = 0;
 let h = 20;
 
 function preload() {
-  font_nanum = loadFont('assets/garam.ttf');
+  font_nanum = loadFont('assets/garam.woff');
   envelope = loadModel('assets/envelope.obj');
   textureMat.concrete = loadImage('assets/concrete.jpg');
   textureMat.steel = loadImage('assets/steel.jpg');
