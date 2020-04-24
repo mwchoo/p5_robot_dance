@@ -22,19 +22,6 @@ let cgSplashName;
 let envelope;
 //let scene_timer;
 
-let textureMat = {
-  'concrete': undefined,
-  'steel': undefined,
-  'marble': undefined,
-  'wood': undefined
-}
-let pframe = {
-  'jusub': undefined,
-  'goodsoon': undefined,
-  'sangyong': undefined,
-  'artech': undefined
-}
-
 let X = 0;
 let Y = 0;
 let Z = 1700;
@@ -46,14 +33,6 @@ let h = 20;
 function preload() {
   font_nanum = loadFont('assets/garam.woff');
   envelope = loadModel('assets/envelope.obj');
-  textureMat.concrete = loadImage('assets/concrete.jpg');
-  textureMat.steel = loadImage('assets/steel.jpg');
-  textureMat.marble = loadImage('assets/marble.jpg');
-  textureMat.wood = loadImage('assets/wood.jpg');
-  pframe.jusub = loadImage('assets/jusub_painted.png');
-  pframe.goodsoon = loadImage('assets/goodsoon_painted.png');
-  pframe.sangyong = loadImage('assets/sangyong_painted.png');
-  pframe.artech = loadImage('assets/artech_painted.png');
   sound_bgm = loadSound('assets/bgm.mp3');
   sound_walk = loadSound('assets/walk.mp3');
 }
@@ -94,16 +73,11 @@ function draw() {
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // draw space
-  drawSpace();
-  draw3DText();
-  drawFrame();
+  //drawSpace();
+  //draw3DText();
 
-  // draw envelope
-  drawEnvelope();
-
-  // draw exhibition stand
-  drawStand();
-  drawCover();
+  // draw groot
+  //drawGroot();
 
   // handle cam setting
   handleKeyDown();
