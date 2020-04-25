@@ -43,10 +43,16 @@ function drawGroot() {
   translate(0, 40, 20);
   rotateX(HALF_PI);
   push();
+  translate(65, 10, 25);
+  rotateX(rot);
+  translate(-65, -10, -25);
   model(groot_model.leg_l_high);
   model(groot_model.leg_l_low);
   pop();
   push();
+  translate(85, 10, 25);
+  rotateX(rot);
+  translate(-85, -10, -25);
   model(groot_model.leg_r_high);
   model(groot_model.leg_r_low);
   pop();
