@@ -19,8 +19,24 @@ let sound_walk;
 
 let font_nanum;  // for envelope text
 let cgSplashName;
-let envelope;
+let groot_model = {
+  'head': undefined,
+  'body': undefined,
+  'arm_l_high': undefined,
+  'arm_l_low': undefined,
+  'arm_r_high': undefined,
+  'arm_r_low': undefined,
+  'leg_l_high': undefined,
+  'leg_l_low': undefined
+};
+let groot_texture = {
+  'head': undefined,
+  'body': undefined,
+  'arms': undefined,
+  'legs': undefined
+}
 //let scene_timer;
+let rot = 0;
 
 let X = 0;
 let Y = 0;
@@ -32,14 +48,25 @@ let h = 20;
 
 function preload() {
   font_nanum = loadFont('assets/garam.woff');
-  envelope = loadModel('assets/envelope.obj');
+  groot_model.head = loadModel('assets/head.obj');
+  groot_model.body = loadModel('assets/body.obj');
+  groot_model.arm_l_high = loadModel('assets/arm_l_high.obj');
+  groot_model.arm_l_low = loadModel('assets/arm_l_low.obj');
+  groot_model.arm_r_high = loadModel('assets/arm_r_high.obj');
+  groot_model.arm_r_low = loadModel('assets/arm_r_low.obj');
+  groot_model.leg_l_high = loadModel('assets/leg_l_high.obj');
+  groot_model.leg_l_low = loadModel('assets/leg_l_low.obj');
+  groot_model.leg_r_high = loadModel('assets/leg_r_high.obj');
+  groot_model.leg_r_low = loadModel('assets/leg_r_low.obj');
+  groot_texture.head = loadImage('assets/head2.jpg');
+  groot_texture.body = loadImage('assets/body.png');
   sound_bgm = loadSound('assets/bgm.mp3');
   sound_walk = loadSound('assets/walk.mp3');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  colorMode(RGB, 1);
+  colorMode(RGB, 255, 255, 255, 1);
   /*
   gl = this._renderer.GL;
   gl.disable(gl.DEPTH_TEST);*/
@@ -56,6 +83,7 @@ function draw() {
 
   // scene control
   if (scene === 0) {
+    scene = 1; // FOR TEST!!!
     drawSplash();
     return;
   }
@@ -66,18 +94,18 @@ function draw() {
 
   // bgm control
   if (!sound_bgm.isPlaying()) {
-    sound_bgm.play();
+    //sound_bgm.play();
   }
 
   // camera setting
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
   // draw space
-  //drawSpace();
+  drawSpace();
   //draw3DText();
 
   // draw groot
-  //drawGroot();
+  drawGroot();
 
   // handle cam setting
   handleKeyDown();
@@ -100,6 +128,10 @@ function handleKeyDown() {
     // turn your head to the right
     X += 10;
   }
+}
+
+function mouseDragged() {
+  rot += 0.1;
 }
 
 function keyPressed() {

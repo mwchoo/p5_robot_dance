@@ -4,7 +4,7 @@ function drawSpace() {
   fill(150, 200, 100);
 
   // bottom
-  texture(textureMat.concrete);
+  //texture(textureMat.concrete);
   noStroke();
 
   // front-back
