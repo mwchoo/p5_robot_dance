@@ -24,10 +24,16 @@ function drawGroot() {
 
   // draw arms
   push();
+  translate(65, 50, 40);
+  rotateZ(rot);
+  translate(-65, -50, -40);
   model(groot_model.arm_l_high);
   model(groot_model.arm_l_low);
   pop();
   push();
+  translate(85, 50, 40);
+  rotateZ(rot);
+  translate(-85, -50, -40);
   model(groot_model.arm_r_high);
   model(groot_model.arm_r_low);
   pop();
