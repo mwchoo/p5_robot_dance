@@ -35,6 +35,7 @@ let groot_texture = {
   'arms': undefined,
   'legs': undefined
 }
+let dancing_factor = 0.2;
 //let scene_timer;
 let rot = 0;
 
