@@ -3,19 +3,21 @@
 20141150 Minwoo Choo
 
 < MANUAL >
-mouseX: control the position of the light
-mouseY: control the envelope cover color
+mouseX, Y: control the position of the light, make groot look at the cursor
 ARROW_UP Key: go forward
 ARROW_DOWN Key: go backward
-ARROW_LEFT Key: turn your head to the left
-ARROW_RIGHT Key: turn your head to the right
+ARROW_LEFT Key: move the camera to the left
+ARROW_RIGHT Key: move the camera to the right
 
 P Key: screen shot
 */
 
 let scene = 0;
-let sound_bgm;
-let sound_walk;
+let sounds = {
+  'bgm': undefined,
+  'walk': undefined,
+  'groot': undefined
+}
 let keymap;
 
 let font_georgia;
@@ -53,6 +55,16 @@ let centerY = 0;
 let centerZ = 0;
 let h = 20;
 
+const missile_area_width = 2000;
+const missile_area_length = 2000;
+const missile_area_height = 1500;
+const missile_speed = 8;
+let rounds = 0;
+let misses = 0;
+let missile_sd = 0;
+let missiles = [];
+let explosions = [];
+
 function preload() {
   font_georgia = loadFont('assets/georgia.ttf');
   groot_model.head = loadModel('assets/head.obj');
@@ -68,8 +80,9 @@ function preload() {
   groot_texture.head = loadImage('assets/head2.jpg'); // remove it!
   groot_texture.body = loadImage('assets/body.png'); // remove it!
   earth_texture = loadImage('assets/earth.jpg');
-  sound_bgm = loadSound('assets/bgm.mp3');
-  sound_walk = loadSound('assets/walk.mp3');
+  sounds.bgm = loadSound('assets/bgm.mp3');
+  sounds.walk = loadSound('assets/walk.mp3');
+  sounds.groot = loadSound('assets/iamgroot.mp3');
   keymap = loadImage('assets/keymap.png');
 }
 
@@ -82,7 +95,6 @@ function setup() {
 
   cgSplashName = new Text("Dancing Groot!", 100, -300, 0, 0, color(195, 56, 51, 1), font_georgia);
   //scene_timer = new Timer(3000, handleScene);
-  genWord(1);
 }
 
 function draw() {
@@ -104,8 +116,8 @@ function draw() {
   ambientLight(100);
 
   // bgm control
-  if (!sound_bgm.isPlaying()) {
-    sound_bgm.play();
+  if (!sounds.bgm.isPlaying()) {
+    sounds.bgm.play();
   }
 
   // camera setting
@@ -113,13 +125,15 @@ function draw() {
 
   // draw space
   drawSpace();
-  //draw3DText();
 
   // draw groot
   drawGroot();
 
   // handle cam setting
   handleKeyDown();
+
+  // draw missile
+  drawMissile();
 
   rot += 0.25;
   planet_self_rot += 0.002;
@@ -158,8 +172,11 @@ function mouseDragged() {
 
 function keyPressed() {
   if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-    if (!sound_walk.isPlaying()) {
-      sound_walk.play();
+    if (!sounds.walk.isPlaying()) {
+      sounds.walk.play();
+    }
+    if (!sounds.groot.isPlaying()) {
+      sounds.groot.play();
     }
   }
   if (keyCode === 80) {
@@ -169,8 +186,8 @@ function keyPressed() {
 
 function keyReleased() {
   if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-    if (sound_walk.isPlaying()) {
-      sound_walk.stop();
+    if (sounds.walk.isPlaying()) {
+      sounds.walk.stop();
     }
     groot_mode = 2; // dancing mode
   }
