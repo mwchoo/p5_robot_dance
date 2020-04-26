@@ -3,10 +3,10 @@ function drawGroot() {
 
   if (groot_mode === 2) {  // dancing mode
     if (frameCount % 20 === 0) {
-      dancing_factor = random(0.1, 0.4);
+      dancing_factor = random(0.1, 0.4);  // randomize groot's movement
     }
     if (frameCount % 100 === 0) {
-      dancing_type = round(random([0, 1]));
+      dancing_type = round(random([0, 1, 2, 3]));  // randomize dancing mode
     }
   }
 
@@ -53,6 +53,7 @@ function drawGrootBody() {
 }
 
 function drawGrootArms() {
+  /* LEFT ARM */
   push();
   translate(65, 50, 40);
   if (groot_mode === 1) {  // walk
@@ -62,6 +63,10 @@ function drawGrootArms() {
       rotateZ(sin(rot) * dancing_factor - 0.3);
     } else if (dancing_type === 1) {
       rotateZ(sin(rot) * dancing_factor - 0.3);
+    } else if (dancing_type === 2) {
+      rotateZ(sin(rot) * dancing_factor - 0.6);
+    } else if (dancing_type === 3) {
+      rotateZ(sin(rot) * dancing_factor - 0.6);
     }
   }
   translate(-65, -50, -40);
@@ -74,12 +79,17 @@ function drawGrootArms() {
       rotateZ(sin(rot) * dancing_factor + 2.5);
     } else if (dancing_type === 1) {
       rotateZ(sin(rot + PI) * dancing_factor + 2.5);
+    } else if (dancing_type === 2) {
+      rotateZ(sin(rot) * dancing_factor - 1);
+    } else if (dancing_type === 3) {
+      rotateZ(sin(rot) * dancing_factor * 1.5 - 1);
     }
   }
   translate(-40, -25, -40);
   model(groot_model.arm_l_low);
   pop();
 
+  /* RIGHT ARM */
   push();
   translate(85, 50, 40);
   if (groot_mode === 1) {  // walk
@@ -89,6 +99,10 @@ function drawGrootArms() {
       rotateZ(sin(rot + PI) * dancing_factor + 0.3);
     } else if (dancing_type === 1) {
       rotateZ(sin(rot + PI) * dancing_factor + 0.3);
+    } else if (dancing_type === 2) {
+      rotateZ(sin(rot + PI) * dancing_factor + 0.6);
+    } else if (dancing_type === 3) {
+      rotateZ(sin(rot) * dancing_factor + 0.6);
     }
   }
   translate(-85, -50, -40);
@@ -101,6 +115,10 @@ function drawGrootArms() {
       rotateZ(sin(rot) * dancing_factor - 2.5);
     } else if (dancing_type === 1) {
       rotateZ(sin(rot) * dancing_factor - 2.5);
+    } else if (dancing_type === 2) {
+      rotateZ(sin(rot + PI) * dancing_factor - 2.5);
+    } else if (dancing_type === 3) {
+      rotateZ(sin(rot) * dancing_factor * 1.5 + 1);
     }
   }
   translate(-105, -25, -40);

@@ -41,7 +41,7 @@ let groot_texture = {
 let earth_texture;
 let groot_mode = 2;
 let dancing_factor = 0.2;
-let dancing_type = 0;  // 0 or 1 : Two mode of dance
+let dancing_type = 0;  // 0, 1, 2, 3 : Four mode of dance
 //let scene_timer;
 let rot = 0;
 let planet_rot = 0;
