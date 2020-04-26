@@ -15,7 +15,7 @@ function drawGroot() {
   } else if (groot_mode === 1) {  // walk
     translate(125, 100 + sin(rot) * dancing_factor * 100, -80);
   } else if (groot_mode === 2) {  // dancing
-    translate(125, 100 + sin(rot) * dancing_factor * 50, -80);
+    translate(125, 100 + sin(rot) * dancing_factor * 20, -80);
   }
   noStroke();
   scale(2);
@@ -113,7 +113,7 @@ function drawGroot() {
   if (groot_mode === 1) {  // walk
     rotateX(sin(rot) * 0.9);
   } else if (groot_mode === 2) {  // dancing
-    rotateX(sin(rot) * 0.9);
+    rotateX(sin(rot) * 0.5 - 0.3);
   }
   translate(-65, -10, -25);
   model(groot_model.leg_l_high);
@@ -121,7 +121,7 @@ function drawGroot() {
   if (groot_mode === 1) {  // walk
     rotateX(sin(rot + PI) * 0.5);
   } else if (groot_mode === 2) {  // dancing
-    rotateX(sin(rot + PI) * 0.5);
+    rotateX(sin(rot + PI) * 0.5 + 0.3);
   }
   translate(-43, -10, -50);
   model(groot_model.leg_l_low);
@@ -132,7 +132,7 @@ function drawGroot() {
   if (groot_mode === 1) {  // walk
     rotateX(sin(rot + PI) * 0.9);
   } else if (groot_mode === 2) {  // dancing
-    rotateX(sin(rot + PI) * 0.9);
+    rotateX(sin(rot) * 0.5 - 0.3);
   }
   translate(-85, -10, -25);
   model(groot_model.leg_r_high);
@@ -140,7 +140,7 @@ function drawGroot() {
   if (groot_mode === 1) {  // walk
     rotateX(sin(rot) * 0.5);
   } else if (groot_mode === 2) {  // dancing
-    rotateX(sin(rot) * 0.5);
+    rotateX(sin(rot + PI) * 0.5 + 0.3);
   }
   translate(-68, -10, -50);
   model(groot_model.leg_r_low);
