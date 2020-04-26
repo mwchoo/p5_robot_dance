@@ -7,7 +7,6 @@ function drawGroot() {
     }
     if (frameCount % 100 === 0) {
       dancing_type = round(random([0, 1]));
-      console.log(dancing_type);
     }
   }
 
