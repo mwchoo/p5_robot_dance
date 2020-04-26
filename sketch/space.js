@@ -7,37 +7,24 @@ function drawSpace() {
   fill(150, 200, 100);
   texture(earth_texture);
   sphere(1250);
+
+  // draw stars
+  for (let i = 0; i < 80; i++) {
+    v = random3D();
+    // PVector v = PVector.random3D(this);
+    v.mult(2500);
+    stroke('rgb(195, 195, 195)');
+    strokeWeight(round(random(1, 10)));
+    point(v.x, v.y, v.z);
+  }
   pop();
+}
 
-  /*
-  push();
-  translate(0, -5, -1000);
-  fill(150, 200, 100);
-
-  // bottom
-  //texture(textureMat.concrete);
-  noStroke();
-
-  // front-back
-  plane(1000, 1000);
-  rotateX(HALF_PI);
-  translate(0, 1000, -500);
-  plane(1000, 2000);
-
-  // left
-  rotateY(HALF_PI);
-  translate(-500, 0, -500);
-  plane(1000, 2000);
-
-  // top
-  rotateY(HALF_PI);
-  translate(-500, 0, -500);
-  plane(1000, 2000);
-
-  // right
-  rotateY(HALF_PI);
-  translate(-500, 0, -500);
-  plane(1000, 2000);
-  pop();
-  */
+function random3D() {
+  const angle = random(0, TWO_PI);
+  const vz = random(-1, 1);
+  const vx = sqrt(1-vz*vz)*cos(angle);
+  const vy = sqrt(1-vz*vz)*sin(angle);
+  v = new p5.Vector(vx, vy, vz);
+  return v;
 }
