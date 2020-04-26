@@ -117,16 +117,9 @@ function draw() {
   // camera setting
   camera(X, Y, Z, centerX, centerY, centerZ, 0, 1, 0);
 
-  // draw space
   drawSpace();
-
-  // draw groot
   drawGroot();
-
-  // handle cam setting
   handleKeyDown();
-
-  // draw missile
   drawMissile();
 
   rot += 0.25;
