@@ -16,6 +16,7 @@ P Key: screen shot
 let scene = 0;
 let sound_bgm;
 let sound_walk;
+let keymap;
 
 let font_georgia;
 let cgSplashName;
@@ -38,7 +39,7 @@ let groot_texture = {
 let earth_texture;
 let groot_mode = 2;
 let dancing_factor = 0.2;
-let dancing_type = 0;  // 0 or 1
+let dancing_type = 0;  // 0 or 1 : Two mode of dance
 //let scene_timer;
 let rot = 0;
 let planet_rot = 0;
@@ -69,6 +70,7 @@ function preload() {
   earth_texture = loadImage('assets/earth.jpg');
   sound_bgm = loadSound('assets/bgm.mp3');
   sound_walk = loadSound('assets/walk.mp3');
+  keymap = loadImage('assets/keymap.png');
 }
 
 function setup() {
@@ -93,6 +95,9 @@ function draw() {
     drawSplash();
     return;
   }
+
+  // show keymap
+  image(keymap, -1000, -500);
 
   // light setting
   pointLight(255, 255, 255, locX, locY, windowHeight / 2);
