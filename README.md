@@ -11,12 +11,11 @@ Minimum Full HD(1920 x 1080) resolution or Higher (Based on DPI Scailing 100%)
 
 ## Manual
 ```
-mouseX: control the position of the light
-mouseY: control the envelope cover color
+mouseX, Y: control the position of the light, make groot look at the cursor
 ARROW_UP Key: go forward
 ARROW_DOWN Key: go backward
-ARROW_LEFT Key: turn your head to the left
-ARROW_RIGHT Key: turn your head to the right
+ARROW_LEFT Key: move the camera to the left
+ARROW_RIGHT Key: move the camera to the right
 
 P Key: screen shot
 ```
