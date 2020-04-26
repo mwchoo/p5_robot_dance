@@ -45,6 +45,17 @@ function drawGrootHead() {
   rotateY(atan2((mouseY ? mouseY : height/2) - 75, (mouseX ? mouseX : width/2) - 40) - 1);  // groot's head follows your mouse
   translate(-75, 0, -40);
   model(groot_model.head);
+
+  // draw groot's eyes
+  push();
+  translate(66, 98, 53);
+  noStroke();
+  specularMaterial(18, 15, 11);
+  shininess(20);
+  sphere(7);  // EYE - L
+  translate(21, -1, -3);
+  sphere(7);  // EYE - R
+  pop();
   pop();
 }
 
