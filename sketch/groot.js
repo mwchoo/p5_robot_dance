@@ -1,6 +1,6 @@
 function drawGroot() {
   /* GROOT MODE - [0] Stop, [1] Walk, [2] Dancing */
-  let groot_mode = 1;
+  let groot_mode = 2;
   let dancing_type = 0;
   if (groot_mode === 2 && frameCount % 20 === 0) {
     dancing_factor = random(0.1, 0.4);
@@ -118,8 +118,8 @@ function drawGroot() {
   translate(-65, -10, -25);
   model(groot_model.leg_l_high);
   translate(45, 10, 45);
-  if (groot_mode === 1) {
-    rotateX(sin(rot + PI) * 0.5);  // walk
+  if (groot_mode === 1) {  // walk
+    rotateX(sin(rot + PI) * 0.5);
   } else if (groot_mode === 2) {  // dancing
     rotateX(sin(rot + PI) * 0.5);
   }
@@ -129,31 +129,24 @@ function drawGroot() {
 
   push();
   translate(85, 10, 25);
-  rotateX(sin(rot + PI) * 0.9);
+  if (groot_mode === 1) {  // walk
+    rotateX(sin(rot + PI) * 0.9);
+  } else if (groot_mode === 2) {  // dancing
+    rotateX(sin(rot + PI) * 0.9);
+  }
   translate(-85, -10, -25);
   model(groot_model.leg_r_high);
   translate(65, 10, 45);
-  rotateX(sin(rot) * 0.5);
+  if (groot_mode === 1) {  // walk
+    rotateX(sin(rot) * 0.5);
+  } else if (groot_mode === 2) {  // dancing
+    rotateX(sin(rot) * 0.5);
+  }
   translate(-68, -10, -50);
   model(groot_model.leg_r_low);
   pop();
-  pop();
-  pop();  // end groot walk motion
+  pop();  // the end of draw legs
+  pop();  // the end of groot walk motion
 
-  /*
-  translate(75, -40, 40);
-  texture(groot_texture.body);
-  //sphere(40, 16, 3);
-  box(60, 100, 30);
-   */
-
-  //fill (255);
-  //cylinder(20, 75, 16, 5, false, true);
-  /*beginShape();
-  vertex (-100, -100, 100);
-  vertex (100, -100, 100);
-  vertex (100, 100, 100);
-  vertex (-100, 100, 100);
-  endShape (CLOSE);*/
   pop();
 }
