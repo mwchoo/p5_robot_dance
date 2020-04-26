@@ -1,12 +1,15 @@
 function drawGroot() {
   /* GROOT MODE - [0] Stop, [1] Walk, [2] Dancing */
   let groot_mode = 2;
-  let dancing_type = 0;
-  if (groot_mode === 2 && frameCount % 20 === 0) {
-    dancing_factor = random(0.1, 0.4);
-  }
-  if (frameCount % 200 === 0) {
-    //dancing_type = random(round(1, 2));
+
+  if (groot_mode === 2) {  // dancing mode
+    if (frameCount % 20 === 0) {
+      dancing_factor = random(0.1, 0.4);
+    }
+    if (frameCount % 200 === 0) {
+      dancing_type = round(random([0, 1]));
+      console.log(dancing_type);
+    }
   }
 
   push();
@@ -70,7 +73,7 @@ function drawGroot() {
     if (dancing_type === 0) {
       rotateZ(sin(rot) * dancing_factor + 2.5);
     } else if (dancing_type === 1) {
-      rotateZ(sin(rot) * dancing_factor + 2.5);
+      rotateZ(sin(rot + PI) * dancing_factor + 2.5);
     }
   }
   translate(-40, -25, -40);
@@ -83,9 +86,9 @@ function drawGroot() {
     rotateZ(sin(rot + PI) * 0.5 + 0.3);
   } else if (groot_mode === 2) {  // dancing
     if (dancing_type === 0) {
-      rotateZ(sin(rot) * dancing_factor + 0.3);
+      rotateZ(sin(rot + PI) * dancing_factor + 0.3);
     } else if (dancing_type === 1) {
-      rotateZ(sin(rot) * dancing_factor + 0.3);
+      rotateZ(sin(rot + PI) * dancing_factor + 0.3);
     }
   }
   translate(-85, -50, -40);
