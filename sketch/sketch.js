@@ -16,7 +16,8 @@ let scene = 0;
 let sounds = {
   'bgm': undefined,
   'walk': undefined,
-  'groot': undefined
+  'groot': undefined,
+  'bomb': undefined
 }
 let keymap;
 
@@ -32,12 +33,6 @@ let groot_model = {
   'leg_l_high': undefined,
   'leg_l_low': undefined
 };
-let groot_texture = {
-  'head': undefined,
-  'body': undefined,
-  'arms': undefined,
-  'legs': undefined
-}
 let earth_texture;
 let groot_mode = 2;
 let dancing_factor = 0.2;
@@ -77,12 +72,11 @@ function preload() {
   groot_model.leg_l_low = loadModel('assets/leg_l_low.obj');
   groot_model.leg_r_high = loadModel('assets/leg_r_high.obj');
   groot_model.leg_r_low = loadModel('assets/leg_r_low.obj');
-  groot_texture.head = loadImage('assets/head2.jpg'); // remove it!
-  groot_texture.body = loadImage('assets/body.png'); // remove it!
   earth_texture = loadImage('assets/earth.jpg');
   sounds.bgm = loadSound('assets/bgm.mp3');
   sounds.walk = loadSound('assets/walk.mp3');
   sounds.groot = loadSound('assets/iamgroot.mp3');
+  sounds.bomb = loadSound('assets/fireworks.mp3');
   keymap = loadImage('assets/keymap.png');
 }
 

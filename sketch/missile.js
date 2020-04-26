@@ -151,6 +151,7 @@ function drawMissile() {
     explosions[i].update(dt);
     if (explosions[i].t <= 0) {
       explosions.splice(i, 1);
+      sounds.bomb.play();
       continue;
     }
 
