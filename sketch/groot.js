@@ -1,12 +1,11 @@
 function drawGroot() {
   /* GROOT MODE - [0] Stop, [1] Walk, [2] Dancing */
-  let groot_mode = 2;
 
   if (groot_mode === 2) {  // dancing mode
     if (frameCount % 20 === 0) {
       dancing_factor = random(0.1, 0.4);
     }
-    if (frameCount % 200 === 0) {
+    if (frameCount % 100 === 0) {
       dancing_type = round(random([0, 1]));
       console.log(dancing_type);
     }
@@ -39,7 +38,7 @@ function drawGroot() {
   push();
   translate(75, 0, 40);
   //rotateY(sin(rot + PI) * 0.7);
-  rotateY(atan2(mouseY - 75, mouseX - 40) - 1.2);  // groot's head follows your mouse
+  rotateY(atan2((mouseY ? mouseY : height/2) - 75, (mouseX ? mouseX : width/2) - 40) - 1);  // groot's head follows your mouse
   translate(-75, 0, -40);
   model(groot_model.head);
   pop();

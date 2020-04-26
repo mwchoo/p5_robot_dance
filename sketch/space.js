@@ -1,5 +1,16 @@
 function drawSpace() {
   push();
+  translate(0, 1430, 50);
+  rotateX(planet_rot);
+  rotateY(planet_self_rot);
+  noStroke();
+  fill(150, 200, 100);
+  texture(earth_texture);
+  sphere(1250);
+  pop();
+
+  /*
+  push();
   translate(0, -5, -1000);
   fill(150, 200, 100);
 
@@ -28,4 +39,5 @@ function drawSpace() {
   translate(-500, 0, -500);
   plane(1000, 2000);
   pop();
+  */
 }
