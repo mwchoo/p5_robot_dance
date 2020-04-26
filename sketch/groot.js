@@ -21,10 +21,7 @@ function drawGroot() {
   noStroke();
   scale(2);
   rotateZ(PI);
-  //texture(groot_head.texture);
-  //fill(106, 77, 63);
   fill(106, 77, 63);
-  //ambientMaterial(106, 77, 63);
 
   // draw walk motion
   push();
@@ -33,7 +30,15 @@ function drawGroot() {
   rotateY(sin(rot) * 0.2);
   translate(-75, 0, -40);
 
-  // draw head
+  drawGrootHead();
+  drawGrootBody();
+  drawGrootArms();
+  drawGrootLegs();
+  pop();  // the end of groot walk motion
+  pop();
+}
+
+function drawGrootHead() {
   push();
   translate(75, 0, 40);
   //rotateY(sin(rot + PI) * 0.7);
@@ -41,16 +46,13 @@ function drawGroot() {
   translate(-75, 0, -40);
   model(groot_model.head);
   pop();
+}
 
-  // draw body
-  //push();
-  //translate(75, 0, 40);
-  //rotateY(sin(rot + PI) * 0.2);
-  //translate(-75, 0, -40);
+function drawGrootBody() {
   model(groot_model.body);
+}
 
-
-  // draw arms
+function drawGrootArms() {
   push();
   translate(65, 50, 40);
   if (groot_mode === 1) {  // walk
@@ -104,8 +106,9 @@ function drawGroot() {
   translate(-105, -25, -40);
   model(groot_model.arm_r_low);
   pop();
+}
 
-  // draw legs
+function drawGrootLegs() {
   push();
   translate(0, 40, 20);
   rotateX(HALF_PI);
@@ -147,7 +150,4 @@ function drawGroot() {
   model(groot_model.leg_r_low);
   pop();
   pop();  // the end of draw legs
-  pop();  // the end of groot walk motion
-
-  pop();
 }
