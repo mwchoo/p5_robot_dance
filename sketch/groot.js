@@ -12,7 +12,7 @@ function drawGroot() {
   // draw head
   push();
   translate(75, 0, 40);
-  rotateY(rot);
+  rotateY(sin(rot));
   translate(-75, 0, -40);
   model(groot_model.head);
   pop();
@@ -25,16 +25,23 @@ function drawGroot() {
   // draw arms
   push();
   translate(65, 50, 40);
-  rotateZ(rot);
+  rotateZ(sin(rot) * 0.5 - 0.3);
   translate(-65, -50, -40);
   model(groot_model.arm_l_high);
+  translate(40, 25, 40);
+  rotateZ(sin(rot) * 0.5);
+  translate(-40, -25, -40);
   model(groot_model.arm_l_low);
   pop();
+
   push();
   translate(85, 50, 40);
-  rotateZ(rot);
+  rotateZ(sin(rot + PI) * 0.5 + 0.3);
   translate(-85, -50, -40);
   model(groot_model.arm_r_high);
+  translate(105, 25, 40);
+  rotateZ(sin(rot + PI) * 0.5);
+  translate(-105, -25, -40);
   model(groot_model.arm_r_low);
   pop();
 
@@ -44,16 +51,23 @@ function drawGroot() {
   rotateX(HALF_PI);
   push();
   translate(65, 10, 25);
-  rotateX(rot);
+  rotateX(sin(rot) * 0.9);
   translate(-65, -10, -25);
   model(groot_model.leg_l_high);
+  translate(45, 10, 45);
+  rotateX(sin(rot + PI) * 0.5);
+  translate(-43, -10, -50);
   model(groot_model.leg_l_low);
   pop();
+
   push();
   translate(85, 10, 25);
-  rotateX(rot);
+  rotateX(sin(rot + PI) * 0.9);
   translate(-85, -10, -25);
   model(groot_model.leg_r_high);
+  translate(65, 10, 45);
+  rotateX(sin(rot) * 0.5);
+  translate(-68, -10, -50);
   model(groot_model.leg_r_low);
   pop();
   pop();
